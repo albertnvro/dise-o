@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Pixelite</title>
+
+	<link rel="stylesheet" media="screen" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+
+	<script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+	<link rel="stylesheet" media="screen" type="text/css" href="css/colorpicker.css">
+	<link rel="stylesheet" media="screen" type="text/css" href="css/general.css">
+	<link rel="stylesheet" media="screen" type="text/css" href="css/menu.css">
+	<link rel="stylesheet" media="screen" type="text/css" href="tooltips.css">
+	
+
+	<script src="https://kit.fontawesome.com/14f06c222f.js" crossorigin="anonymous"></script>
+
+
+	<script type="text/javascript" src="js/jquery-3.1.0.min.js"></script>
+	<script type="text/javascript" src="js/colorpicker.js"></script>
+	<script type="text/javascript" src="js/Color.js"></script>
+	<script type="text/javascript" src="cabriteirus.js"></script>
+
+	<style>
+
+
+
+
+/* fin cajas */
+
+
+
+
+
+#control_principal {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  padding: 100px;
+}
+
+
+
+/* cajitas */
+.colherramientas {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  width: 100%;
+  padding: 10px;
+ 
+  height: auto;
+  
+}
+
+.itemgrid {
+  z-index: -2;
+
+  background-color: rgba(34, 34, 34, 0.8);
+  grid-template-columns: repeat(2, 1fr); 
+  font-weight: bold;
+  position: relative;
+  overflow: hidden;
+  padding: 15px;
+  border-radius: 5px;
+}
+
+
+.ctbotones {
+	width: 100%;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	display: inline;
+	width: 200px;
+	padding: 20px;
+
+}
+
+.control_principal {
+	width: 90%;
+	display: grid;
+	justify-content: center;
+  margin: 0 auto;
+}
+.contenido {
+padding: 10px;
+display: flex;
+justify-content: center;
+  
+ 
+}
+
+	</style>
+</head>
+<body>
+
+	<header>
+		<div class="logo">Logo</div>
+		<nav>
+		  <ul class="nav-links">
+			<li><a href="#">Controlador</a></li>
+			<li><a href="#">Configuración</a></li>
+			<li><a href="#">Mi cuenta</a></li>
+		
+		  </ul>
+		  <div class="burger">
+			<div class="line1"></div>
+			<div class="line2"></div>
+			<div class="line3"></div>
+		  </div>
+		</nav>
+	  </header>
+	  
+
+
+	  <div class="control_principal">
+		<div class="contenido">
+	
+		<h1>Interfaz de efectos</h1>
+		</div>
+		<div id="tablero" >
+			<div class="sep"></div>
+			<div class="tabla"></div>
+			<div class="sep"></div>
+			<div class="info" style="  display: flex;
+			flex-wrap: wrap;
+			justify-content: center;">
+				<div>
+					<input type="button" value="Mode" onclick="changeMode();"><label id="ifn_clk" style="width: 100%">
+			
+							
+						<div class="select-box">
+							<select name="opciones" id="opciones" class="select-box__select">
+							  <option value="opcion-1">Opción 1</option>
+							  <option value="opcion-2">Opción 2</option>
+							  <option value="opcion-3">Opción 3</option>
+							</select>
+							<div class="select-box__icon"></div>
+						  </div>
+						  
+
+						  
+
+					
+						  
+					
+					</label>
+				</div>
+				<div>
+					<label>Posición 1</label> <label id="ifn_pos1">n/a</label>
+					<label>Posición 2</label> <label id="ifn_pos2">n/a</label>
+				</div>
+				<div>
+					<label>Nº Led</label> <label id="ifn_ledpos">0</label>
+				</div>
+				<div>
+					<label>Color Led</label> <label id="ifn_ledcolor" style="background-color: black; width: 120px;">0, 0, 0</label>
+				</div>
+				<div>
+					<label>Potencia</label> <label id="ifn_ledpower" style="width: 70px;"></label>
+				</div>
+				<div>
+					
+					<input type="button" value="Set" onclick="setSelection($(`#pick1`).ColorPickerGetColor());">
+					<input type="button" value="Clear" onclick="clearLeds();">
+				</div>
+			</div>	
+			<div class="sep"></div>
+			<div class="colherramientas">
+
+
+			<div class="controles itemgrid">
+				<div class="inputcolor">
+					<div id="pick1" class="picker"></div>
+					<div id="pick2" class="picker"></div>
+				</div>
+
+		
+
+				
+				</div>
+				<div class="itemgrid">
+
+					<div class="titulocaja">	Efectos guardados</div>
+				<div class="botones">
+					<div>
+					
+						
+						<div class="tooltip"><i class="fa-sharp fa-solid fa-circle-info fa-sm tooltip" style=" color: var(--color-negro);"></i>
+							<div class="top">
+								
+								<p>Te mostramos cualquier efecto que hayas guardado para biblioteca.</p>
+								
+							</div>
+						</div>
+<div class="ctbotones">
+						<br>
+						<div div="areascroll">
+						<button class="radio" type="radio" name="setmode" value="1" checked> Modo 1</button>
+						<button class="radio" name="setmode" value="2" checked> Modo 2</button>
+						<button class="radio" name="setmode" value="3"> Modo 3</button>
+						<button class="radio"name="setmode" value="4"> Modo 4</button>
+					 	<button type="radio" name="setmode" value="5"> Modo 5</button>
+					</div>
+					</div>
+				</div>
+				</div>
+
+				</div>
+
+				<div class="botonesradio itemgrid">
+					<div id="scrollable-div">
+		
+
+							
+
+
+					<input type="button" value="Mode" onclick="bt_mode();">
+					<input type="button" value="Set" onclick="bt_set();">
+					<input type="button" value="Clear" onclick="bt_clear();">
+					<input type="button" id="ejecutar" value="Save" onclick="bt_save();">
+					<input type="button" value="Paste" onclick="bt_paste();">
+					<input type="button" value="Reload" onclick="bt_reload();">
+			
+				
+			
+			</div>
+		
+		</div>
+		<div style="clear: both;"></div>
+	</section>
+</div>
+
+
+<!-- Pegar código JSON -->
+	<div id="capa">
+		
+			<textarea id="code_text" tabindex="1" placeholder="Pega el codigo JSON aquí..."></textarea>
+		
+	</div>
+<!-- fin pegar json-->
+
+
+</body>
+</html>

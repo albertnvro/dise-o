@@ -1,0 +1,70 @@
+<!doctype html>
+    <html lang="">
+        <head> 
+            <meta charset="UTF-8">
+            <title>Ejercicio 10 - Formulario: El peso ideal</title>
+            <!-- 
+                Con un formulario podremos introducir datos a la aplicación para que sea más atractiva.
+                Puedes usar una estructura html sencilla para el formulario que consistirá en:
+
+                <form name="miformulario">
+                <p><label>Altura en cm (170)</label> <input type="text" placeholder="170" size="10" name="alto"/></p>
+                ...
+                </form>
+
+                Calculemos el peso ideal.
+                Los datos introducidos por el usuario serán:
+                - Altura
+                - Peso
+                - Edad
+                - Sexo
+
+                Con estos datos obtendremos lo necesario para aplicar la formula:
+                50 + ( ( Altura - 150) / 4) * 3 ) + ( Edad - 20 ) / 4
+
+                Si el usuario es mujer además hay que multiplicar el resultado por 0,9
+
+                Incorpora también una recomendación para ganar o perder peso y estaría bien que cambiara de color según la recomendación.
+                Para esto puedes crear una etiqueta style para definir las clases rojo y verde para tu css.
+                Las clases se pueden agregar dinámicamente mediante classList.add() 
+                https://developer.mozilla.org/en-US/docs/Web/API/Element/classList
+
+             -->
+             <style>
+                .red {
+                    background-color: red;
+                }
+                .green {
+                    background-color: green;
+                }
+             </style>
+            <script>
+                function pesoTotal(datoaltura=1, datopeso=1, datoedad=1, datosexo="N") {
+                    let altura = parseInt(datoaltura);
+                    let edad = parseInt(datoedad);
+                    let peso = parseInt(datopeso);
+                // ...
+                }
+            </script>
+        </head>
+        <body>
+            <!-- Te dejamos un ejemplo de como implementar campos de formularios
+            1. Para un input normal
+            2. Para un tipo "radio"  -->
+            <form name="miformulario">
+                <label>Altura en cm (ej: 170)</label> <input type="text" placeholder="170" size="10" name="alto"/>
+                <!-- Introduce el resto de campos necesarios -->
+                <p><label>Sexo</label>
+                    <input type="radio" name="sexo" value="M" checked>Mujer
+                    <input type="radio" name="sexo" value="H">Hombre</p>
+                <input id="pideal" type="button" 
+                    onclick="" 
+                    value="Calcula peso ideal" />
+                <input type="reset" value="Reset" />
+                <br/> El peso aproximado de referencia es: 
+
+                <h3><span id="recomendar"></span></h3>
+                
+            </form>
+        </body> 
+</html>
